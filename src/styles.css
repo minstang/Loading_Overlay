@@ -21,7 +21,6 @@ body {
 	 stroke-dasharray: 270;
 	 stroke-dashoffset: 0;
 	 transform-origin: center;
-	 stroke: #79b700;
 	 animation: dash 1.5s ease-in-out infinite, colors 3s ease-in-out infinite;
 }
  .cds-loading-spinner {
@@ -104,4 +103,3 @@ body {
 	 color: #3a3a3a;
 	 margin-top: 0.5rem;
 }
- 
