@@ -32,18 +32,18 @@ body{
 
 /* ----Loading spinner--- */
 .cds-loading-spinner {
-  display:block;
+  display:inline-block;
   width: 80px;
   height: 80px;
   border-radius: 100%;
   position: relative;
-  margin: auto;
   border: 8px solid $interactive-01;
   border-top: 8px solid $ui-00;
-  -webkit-animation: spin .8s linear infinite;
-  -ms-animation: spin .8s linear infinite;
-  -o-animation: spin .8s linear infinite;
-  animation: spin .8s linear infinite;
+  animation-name: spin;
+  animation-duration: .8s;
+  animation-timing-function: linear;
+  animation-fill-mode:forwards;
+  animation-iteration-count: infinite;
   &.-sm {
     display:inline-block;
     margin:.5rem;
@@ -78,59 +78,15 @@ body{
 }
 
 
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(270deg);
-  }
-}
-
-@keyframes colors {
-  0% {
-    stroke: $interactive-01;
-  }
-
-  10% {
-    stroke: $focus-01;
-  }
-
-  100% {
-    stroke: $interactive-01;
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dashoffset: 266;
-  }
-
-  50% {
-    stroke-dashoffset: (266/4);
-    transform: rotate(135deg);
-  }
-
-  100% {
-    stroke-dashoffset: 266;
-    transform: rotate(450deg);
-  }
-}
-
-
 /* ----Loading elements horizontal alignment--- */
 
 .cds-loading {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  display:flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 3rem;
 }
-
 
 
 
