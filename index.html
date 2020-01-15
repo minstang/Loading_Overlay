@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="src/styles.css">
-  </head>
 
-  <body>
-    <!-- Loading overlay to cover the entire viewport -->
+<head>
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
+</head>
 
-    <p>
-      screen content to be covered.
-    </p>
+<body>
+<!-- Loading overlay to cover the entire viewport -->
 
-    <div class="cds-overlay">
-      <div class="cds-loading">
-        <!-- Loading spinner -->
-        <div class="cds-loading-spinner"></div>
-        <!-- Loading message -->
-        <span class="cds-loading-primary-message">Loading Dynamic Input</span>
-        <span class="cds-loading-secondary-message"
-          >Wait a moment while we retrieve your dynamic input.</span
-        >
-      </div>
-    </div>
+<p>
+	screen content to be covered.
+</p>
 
-    <script src="src/index.js"></script>
-  </body>
+<div class="cds-overlay">
+
+		<div class="cds-loading">
+
+		<!-- Loading Spinner -->
+		<div class="cds-spinner-container">
+				<svg class="cds-loading-spinner" viewBox="0 0 96 96">
+				<circle cx="48" cy="48" r="44"></circle>
+			  </svg>
+		</div>
+
+		<!-- Loading message -->
+		<span class="cds-loading-primary-message">Loading Dynamic Input</span>
+		<span class="cds-loading-secondary-message">Wait a moment while we retrieve your dynamic input.<span>
+	</div>
+</div>
+
+	<script src="src/index.js">
+	</script>
+</body>
+
 </html>

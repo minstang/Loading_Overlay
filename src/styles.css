@@ -14,9 +14,81 @@ body {
 	 background-color: rgba(255, 255, 255, 1);
 	 z-index: 8000;
 }
-/* ----Loading spinner--- */
+/* ----Align Loading Spinner and Loading Message in the center of the screen--- */
+ .cds-loading {
+	 display: flex;
+	 justify-content: center;
+	 align-content: center;
+	 flex-direction: column;
+	 text-align: center;
+	 padding: 3rem;
+}
+/* ----SVG Loading Spinner--- */
+ .cds-loading-spinner > circle {
+	 fill: none;
+	 stroke-width: 8;
+	 stroke-dasharray: 270;
+	 stroke-dashoffset: 0;
+	 stroke-linecap: round;
+	 transform-origin: center;
+	 stroke: #79b700;
+	 animation: dash 1.5s ease-in-out infinite, colors 3s ease-in-out infinite;
+}
  .cds-loading-spinner {
 	 display: inline-block;
+	 margin: auto;
+	 width: 88px;
+	 height: 88px;
+	 r: 44px;
+	 animation: rotate 1.5s linear infinite;
+}
+ .cds-loading-spinner.-sm {
+	 display: inline;
+	 margin: 0;
+	 width: 24px;
+	 height: 24px;
+}
+ .cds-loading-spinner.-sm circle {
+	 stroke-dasharray: 270;
+	 stroke-width: 12px;
+	 r: 36px;
+}
+ @keyframes rotate {
+	 0% {
+		 transform: rotate(0deg);
+	}
+	 100% {
+		 transform: rotate(270deg);
+	}
+}
+ @keyframes colors {
+	 0% {
+		 stroke: #79b700;
+	}
+	 10% {
+		 stroke: #c9e299;
+	}
+	 100% {
+		 stroke: #79b700;
+	}
+}
+ @keyframes dash {
+	 0% {
+		 stroke-dashoffset: 266;
+	}
+	 50% {
+		 stroke-dashoffset: 66.5;
+		 transform: rotate(135deg);
+	}
+	 100% {
+		 stroke-dashoffset: 266;
+		 transform: rotate(450deg);
+	}
+}
+/* ----CSS Pseudo Class Loading Spinner--- */
+ .cds-spinner-container::before {
+	 content: "";
+	 display: none;
 	 width: 80px;
 	 height: 80px;
 	 border-radius: 100%;
@@ -29,12 +101,12 @@ body {
 	 animation-fill-mode: forwards;
 	 animation-iteration-count: infinite;
 }
- .cds-loading-spinner.-sm {
-	 display: inline-block;
+ .cds-spinner-container.-sm::before {
+	 display: none;
 	 margin: 0.5rem;
 	 width: 14px;
 	 height: 14px;
-	 border: 3px solid rgba(121, 183, 0, 0.5);
+	 border: 3px solid #c9e299;
 	 border-top: 3px solid #79b700;
 }
  @keyframes spin {
@@ -57,15 +129,7 @@ body {
 		 transform: rotate(360deg);
 	}
 }
-/* ----Loading elements horizontal alignment--- */
- .cds-loading {
-	 display: flex;
-	 flex-direction: column;
-	 align-items: center;
-	 text-align: center;
-	 padding: 3rem;
-}
-/* ----Loading message style--- */
+/* ----Loading Message --- */
  .cds-loading-primary-message {
 	 font-family: Roboto-Medium;
 	 font-size: 24px;
@@ -82,5 +146,16 @@ body {
 	 line-height: 28px;
 	 color: #3a3a3a;
 	 margin-top: 0.5rem;
+}
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	 .cds-loading-spinner {
+		 display: none;
+	}
+	 .cds-spinner-container::before {
+		 display: inline-block;
+	}
+	 .cds-spinner-container.-sm::before {
+		 display: inline-block;
+	}
 }
  

@@ -30,9 +30,93 @@ body{
 }
 
 
-/* ----Loading spinner--- */
+/* ----Align Loading Spinner and Loading Message in the center of the screen--- */
+.cds-loading {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 3rem;
+}
+
+
+/* ----SVG Loading Spinner--- */
+.cds-loading-spinner > circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-dasharray: 270;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transform-origin: center;
+  stroke: $interactive-01;
+  animation: dash 1.5s ease-in-out infinite, colors 3s ease-in-out infinite;
+}
 .cds-loading-spinner {
-  display:inline-block;
+  display: inline-block;
+  margin: auto;
+  width: 88px;
+  height: 88px;
+  r: 44px;
+  animation: rotate 1.5s linear infinite;
+
+  &.-sm {
+    display: inline;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+
+    circle {
+      stroke-dasharray: 270;
+      stroke-width: 12px;
+      r: 36px;
+    }
+  }
+
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
+  }
+}
+@keyframes colors {
+  0% {
+    stroke: $interactive-01;
+  }
+
+  10% {
+    stroke: $focus-01;
+  }
+
+  100% {
+    stroke: $interactive-01;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 266;
+  }
+
+  50% {
+    stroke-dashoffset: (266/4);
+    transform: rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: 266;
+    transform: rotate(450deg);
+  }
+}
+
+
+/* ----CSS Pseudo Class Loading Spinner--- */
+.cds-spinner-container::before{
+  content:"";
+  display:none;
   width: 80px;
   height: 80px;
   border-radius: 100%;
@@ -44,16 +128,15 @@ body{
   animation-timing-function: linear;
   animation-fill-mode:forwards;
   animation-iteration-count: infinite;
-  &.-sm {
-    display:inline-block;
+}
+.cds-spinner-container.-sm::before{
+    display:none;
     margin:.5rem;
     width: 14px;
     height: 14px;
-    border: 3px solid rgba(121, 183, 0, 0.5);
+    border: 3px solid $focus-01;
     border-top: 3px solid $interactive-01;
-  }
 }
-
 @keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -77,20 +160,7 @@ body{
   }
 }
 
-
-/* ----Loading elements horizontal alignment--- */
-
-.cds-loading {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3rem;
-}
-
-
-
-/* ----Loading message style--- */
+/* ----Loading Message --- */
 
 .cds-loading-primary-message {
     font-family: Roboto-Medium;
@@ -102,10 +172,27 @@ body{
     margin: 50px 0 0 0;
 }
 .cds-loading-secondary-message {
-    font-family: Roboto-Light;
-    font-size: 24px;
-    font-weight: 100;
-    line-height: 28px;
-    color: $text-01;
-    margin-top: 0.5rem;
+  font-family: Roboto-Light;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  color: $text-01;
+  margin-top: 0.5rem;
+}
+
+
+// Unable SVG Spinner Display Pseudo Class Spinner for Internet Explorer/Edge ≥ 10
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+  .cds-loading-spinner {
+    display:none;
+  }
+
+  .cds-spinner-container::before{
+    display:inline-block;
+  }
+
+  .cds-spinner-container.-sm::before{
+    display:inline-block;
+  }
 }
